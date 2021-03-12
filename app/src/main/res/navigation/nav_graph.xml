@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.starostinvlad.teamof8testingapp.MainScreen.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_testFragment"
+            app:destination="@id/testFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
+        <action
+            android:id="@+id/action_mainFragment_to_themesFragment"
+            app:destination="@id/themesFragment"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popEnterAnim="@anim/from_right"
+            app:popExitAnim="@anim/to_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/testFragment"
+        android:name="com.starostinvlad.teamof8testingapp.TestScreen.TestFragment"
+        android:label="activity_test"
+        tools:layout="@layout/activity_test">
+        <argument
+            android:name="theme"
+            app:argType="com.starostinvlad.teamof8testingapp.Models.Theme" />
+        <action
+            android:id="@+id/action_testFragment_to_imageFragment"
+            app:destination="@id/imageFragment"
+            app:enterAnim="@anim/fade"
+            app:exitAnim="@anim/show"
+            app:popEnterAnim="@anim/show"
+            app:popExitAnim="@anim/fade"
+            app:popUpTo="@+id/testFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/themesFragment"
+        android:name="com.starostinvlad.teamof8testingapp.ThemesScreen.ThemesFragment"
+        android:label="ThemesFragment" >
+        <action
+            android:id="@+id/action_themesFragment_to_testFragment"
+            app:destination="@id/testFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/imageFragment"
+        android:name="com.starostinvlad.teamof8testingapp.ImageScreen.ImageFragment"
+        android:label="fragment_image"
+        tools:layout="@layout/fragment_image" >
+        <argument
+            android:name="IMAGE"
+            app:argType="string" />
+    </fragment>
+</navigation>
