@@ -22,25 +22,27 @@ class ThemesFragmentPresenter {
         themeDao = App.getDatabase().themeDao();
         view.showLoading(true);
 
-        disposable =
-//                RestClient.instance()
-//                        .getThemes()
-//                        .retryWhen(f -> f.take(2).delay(1, TimeUnit.SECONDS))
-//                        .switchIfEmpty(
-                themeDao.getThemes()
-//                        )
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribeOn(Schedulers.io())
-                        .subscribe(val -> {
-                                    view.fillList(val);
-                                    view.showLoading(false);
-                                }
-                                ,
-                                throwable -> {
-                                    view.showLoading(false);
-                                    throwable.printStackTrace();
-                                }
-                        );
+        disposable = themeDao.getThemes()
+                .toObservable()
+                .flatMapIterable(val -> val)
+                .flatMap(val -> App.getDatabase().questionDao().getCorrectAndTotalQuestionsCountByThemeId(val.getId()).toObservable(),
+                        (theme, counter) -> {
+                            theme.setCounter(counter);
+                            return theme;
+                        })
+                .toList()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(val -> {
+                            view.fillList(val);
+                            view.showLoading(false);
+                        }
+                        ,
+                        throwable -> {
+                            view.showLoading(false);
+                            throwable.printStackTrace();
+                        }
+                );
     }
 
     void onDetach() {

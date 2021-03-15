@@ -2,4 +2,5 @@
     <string name="app_name">1С:Профессионал</string>
     <string name="progressPerExam">%d/14</string>
     <string name="readyForExamInpercent">%.2f%%</string>
+    <string name="progressPerTheme">%d/%d</string>
 </resources>

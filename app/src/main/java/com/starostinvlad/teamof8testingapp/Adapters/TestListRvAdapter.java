@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.starostinvlad.teamof8testingapp.Models.Theme;
 import com.starostinvlad.teamof8testingapp.R;
+import com.starostinvlad.teamof8testingapp.ThemesScreen.CustomProgressBar;
 
 import java.util.List;
 
@@ -39,12 +40,17 @@ public class TestListRvAdapter extends RecyclerView.Adapter<TestListRvAdapter.Vi
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
         viewHolder.titleView.setText(themes.get(i).getTitle());
+        int progress = (int) themes.get(i).getCounter().getCorrectCount();
+        int total = (int) themes.get(i).getCounter().getTotalCount();
+        viewHolder.progressBar.setProgress(progress);
+        viewHolder.progressBar.setMax(total);
+        viewHolder.textPerTheme.setText(viewHolder.textPerTheme.getContext().getResources().getString(R.string.progressPerTheme,progress,total));
     }
 
     @Override
     public int getItemCount() {
         if (themes == null) {
-            return -1;
+            return 0;
         }
         return themes.size();
     }
@@ -57,14 +63,16 @@ public class TestListRvAdapter extends RecyclerView.Adapter<TestListRvAdapter.Vi
     class ViewHolder extends RecyclerView.ViewHolder {
         private final String TAG = getClass().getSimpleName();
 
-        private final TextView titleView;
+        private final TextView titleView, textPerTheme;
+        private final CustomProgressBar progressBar;
 
         ViewHolder(View view) {
             super(view);
-            titleView = view.findViewById(R.id.text_test_title);
-            view.setOnClickListener(v -> {
-                onItemClickListener.onItemClick(themes.get(getAdapterPosition()));
-            });
+            titleView = view.findViewById(R.id.textTestTitle);
+            textPerTheme = view.findViewById(R.id.textPerTheme);
+            progressBar = view.findViewById(R.id.progressPerTheme);
+
+            view.setOnClickListener(v -> onItemClickListener.onItemClick(themes.get(getAdapterPosition())));
         }
     }
 }

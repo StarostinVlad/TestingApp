@@ -90,8 +90,6 @@ public class TestFragment extends Fragment implements TestFragmentContract {
         gridLayoutManager = new LinearLayoutManager(getContext());
         gridLayoutManager.setOrientation(RecyclerView.HORIZONTAL);
         questionsRV.setLayoutManager(gridLayoutManager);
-//        Random random = new Random();
-//        boolean exam = random.nextBoolean();
 
         questionListRvAdapter = new QuestionListRvAdapter(exam);
         questionListRvAdapter.setOnItemClickListener(val -> testFragmentPresenter.setActiveQuestion(val));
@@ -112,18 +110,6 @@ public class TestFragment extends Fragment implements TestFragmentContract {
 
     }
 
-//
-//    @Override
-//    public void onConfigurationChanged(Configuration newConfig) {
-//        super.onConfigurationChanged(newConfig);
-//        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-//            gridLayoutManager.setSpanCount(1);
-//            Toast.makeText(this, "ORIENTATION_LANDSCAPE", Toast.LENGTH_SHORT).show();
-//        } else {
-//            Toast.makeText(this, "ORIENTATION_PORTRAIT", Toast.LENGTH_SHORT).show();
-//            gridLayoutManager.setSpanCount(2);
-//        }
-//    }
 
 
     @Override

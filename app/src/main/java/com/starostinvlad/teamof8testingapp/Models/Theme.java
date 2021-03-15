@@ -2,12 +2,14 @@ package com.starostinvlad.teamof8testingapp.Models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.starostinvlad.teamof8testingapp.Counter;
 
 import java.io.Serializable;
 
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity
@@ -21,6 +23,16 @@ public class Theme implements Serializable {
     private String title;
     @ColumnInfo(name = "sectionId")
     private long sectionId;
+    @Ignore
+    private Counter counter;
+
+    public Counter getCounter() {
+        return counter;
+    }
+
+    public void setCounter(Counter counter) {
+        this.counter = counter;
+    }
 
     public long getSectionId() {
         return sectionId;

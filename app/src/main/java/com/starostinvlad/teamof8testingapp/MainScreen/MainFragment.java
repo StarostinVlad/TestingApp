@@ -15,6 +15,7 @@ import com.starostinvlad.teamof8testingapp.R;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
@@ -30,6 +31,9 @@ public class MainFragment extends Fragment implements MainFragmentContract {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        ((AppCompatActivity) requireActivity()).getSupportActionBar().setTitle(getResources().getString(R.string.app_name));
+
         presenter = new MainFragmentPresenter(this);
         button = view.findViewById(R.id.theme_btn);
         examBtn = view.findViewById(R.id.exam_btn);

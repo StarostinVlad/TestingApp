@@ -16,6 +16,7 @@ import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -42,8 +43,11 @@ public class ThemesFragment extends Fragment implements ThemesFragmentContract {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        progressBar = view.findViewById(R.id.pb_themes_loading);
-        testRecycleView = view.findViewById(R.id.rv_test_list);
+
+        ((AppCompatActivity) requireActivity()).getSupportActionBar().setTitle("Темы");
+
+        progressBar = view.findViewById(R.id.pbThemesLoading);
+        testRecycleView = view.findViewById(R.id.rvTestList);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setOrientation(RecyclerView.VERTICAL);
@@ -81,3 +85,4 @@ public class ThemesFragment extends Fragment implements ThemesFragmentContract {
         super.onDestroy();
     }
 }
+

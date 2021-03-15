@@ -52,6 +52,13 @@ public interface QuestionDao {
             " FROM question")
     Single<Counter> getCorrectAndTotalQuestionsCount();
 
+    @Transaction
+    @Query("SELECT " +
+            "COUNT(CASE WHEN lastAnswerIndex=correctAnswer THEN 1 END) AS correctCount," +
+            "COUNT(*) AS totalCount" +
+            " FROM question WHERE themeId=:themeId")
+    Single<Counter> getCorrectAndTotalQuestionsCountByThemeId(int themeId);
+
     @Query("DELETE FROM question")
     void deleteAll();
 }
