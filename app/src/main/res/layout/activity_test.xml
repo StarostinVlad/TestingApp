@@ -18,6 +18,12 @@
         android:layout_marginBottom="60dp"
         android:orientation="vertical">
 
+        <com.appodeal.ads.BannerView
+            android:id="@+id/appodealBannerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_questions"
             android:layout_width="wrap_content"
@@ -53,10 +59,10 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textSize="18dp"
-                            android:textColor="@android:color/black"
                             android:layout_margin="5dp"
                             android:textAlignment="center"
+                            android:textColor="@android:color/black"
+                            android:textSize="18dp"
                             android:visibility="gone" />
 
                         <ImageView
@@ -79,14 +85,15 @@
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
     </LinearLayout>
-        <Button
-            android:id="@+id/btn_check"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_gravity="bottom"
-            android:layout_margin="10dp"
-            android:background="@drawable/btn_background"
-            android:enabled="false"
-            android:text="Следующий"
-            android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/btn_check"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom"
+        android:layout_margin="10dp"
+        android:background="@drawable/btn_background"
+        android:enabled="false"
+        android:text="Следующий"
+        android:textColor="@android:color/white" />
 </FrameLayout>
