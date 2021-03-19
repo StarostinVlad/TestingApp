@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1066665811617",
+    "project_id": "c-professional",
+    "storage_bucket": "c-professional.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1066665811617:android:a4e5491a79a0b6f65f1ae0",
+        "android_client_info": {
+          "package_name": "com.starostinvlad.professional_1c"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1066665811617-h0asi3jphbd9qjrp775ppd0m9k6h2b3h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDmAf4o--maOBXAj16alr8uLu-qouSwP8U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1066665811617-h0asi3jphbd9qjrp775ppd0m9k6h2b3h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -38,9 +38,20 @@
             android:layout_weight="1"
             android:background="@drawable/exam_btn_background"
             android:text="Экзамен" />
-    </LinearLayout>
 
-    <com.starostinvlad.teamof8testingapp.ProgressButton
+    </LinearLayout>
+    <Button
+        android:id="@+id/errors_btn"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="100dp"
+        android:minWidth="150dp"
+        android:layout_margin="5dp"
+        android:background="@drawable/errors_btn_background"
+        android:text="Ошибки" />
+
+    <com.starostinvlad.professional_1c.Views.ProgressButton
         android:layout_gravity="center"
         android:layout_margin="10dp"
         app:btnText="Обновить данные"

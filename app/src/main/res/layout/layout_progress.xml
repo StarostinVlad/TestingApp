@@ -4,13 +4,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ProgressBar
+    <com.starostinvlad.professional_1c.Views.CustomProgressBar
         android:id="@+id/progress_user"
         style="@style/MyProgressBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        android:max="700"
         android:progressDrawable="@drawable/green_progress" />
 
     <TextView
