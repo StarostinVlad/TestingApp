@@ -64,10 +64,10 @@ public class MainFragment extends Fragment implements MainFragmentContract {
         loadBtn.setOnButtonClickListener(v -> {
             ComponentName serviceComponent = new ComponentName(getContext(), TestJobService.class);
             JobInfo.Builder builder = new JobInfo.Builder(13101997, serviceComponent);
-            builder.setPeriodic(TimeUnit.MINUTES.toMillis(5));
-            builder.setPersisted(true);
-//            builder.setMinimumLatency(TimeUnit.MINUTES.toMillis(15)); // wait at least
-//            builder.setOverrideDeadline(3 * 1000); // maximum delay
+//            builder.setPeriodic(TimeUnit.MINUTES.toMillis(5));
+//            builder.setPersisted(true);
+            builder.setMinimumLatency(TimeUnit.SECONDS.toMillis(10)); // wait at least
+            builder.setOverrideDeadline(3 * 1000); // maximum delay
             //builder.setRequiredNetworkType(JobInfo.NETWORK_TYPE_UNMETERED); // require unmetered network
             //builder.setRequiresDeviceIdle(true); // device should be idle
             //builder.setRequiresCharging(false); // we don't care if the device is charging or not

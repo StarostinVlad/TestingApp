@@ -11,6 +11,7 @@ public class UserProgress implements Serializable {
     @Ignore
     private int answersPerExam;
 
+
     public long getTotalCount() {
         return totalCount;
     }

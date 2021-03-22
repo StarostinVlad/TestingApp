@@ -33,15 +33,6 @@
         <argument
             android:name="theme"
             app:argType="com.starostinvlad.professional_1c.Models.Theme" />
-        <action
-            android:id="@+id/action_testFragment_to_imageFragment"
-            app:destination="@id/imageFragment"
-            app:enterAnim="@anim/fade"
-            app:exitAnim="@anim/show"
-            app:popEnterAnim="@anim/show"
-            app:popExitAnim="@anim/fade"
-            app:popUpTo="@+id/testFragment"
-            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/themesFragment"
@@ -54,14 +45,5 @@
             app:exitAnim="@anim/to_left"
             app:popEnterAnim="@anim/from_left"
             app:popExitAnim="@anim/to_right" />
-    </fragment>
-    <fragment
-        android:id="@+id/imageFragment"
-        android:name="com.starostinvlad.professional_1c.ImageScreen.ImageFragment"
-        android:label="fragment_image"
-        tools:layout="@layout/fragment_image" >
-        <argument
-            android:name="IMAGE"
-            app:argType="string" />
     </fragment>
 </navigation>

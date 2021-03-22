@@ -17,12 +17,10 @@ import io.reactivex.Single;
 @Dao
 public interface ThemeDao {
 
-    @Query("SELECT * FROM theme WHERE id = :id")
-    Observable<Theme> getTheme(long id);
 
 
     @Query("SELECT * FROM theme WHERE id = :id")
-    Observable<Theme> getById(long id);
+    Single<Theme> getByThemeId(long id);
 
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -41,7 +39,7 @@ public interface ThemeDao {
     @Query("SELECT * FROM theme ORDER BY title ASC")
     Single<List<Theme>> getThemes();
 
-    @Query("SELECT * FROM theme ORDER BY title ASC")
-    List<Theme> getTheme();
+    @Query("SELECT * FROM theme ORDER BY RANDOM() LIMIT 1")
+    Single<Theme> getRandomTheme();
 
 }

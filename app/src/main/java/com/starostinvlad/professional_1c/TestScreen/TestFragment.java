@@ -84,7 +84,7 @@ public class TestFragment extends Fragment implements TestFragmentContract {
         progressBar = view.findViewById(R.id.pb_loading);
 
         if (getArguments().containsKey(EXTRA)) {
-            Theme theme = (Theme) getArguments().getSerializable("theme");
+            Theme theme = (Theme) getArguments().getSerializable(EXTRA);
             Log.d(TAG, "onViewCreated: themeID:" + theme.getId());
             ((AppCompatActivity) requireActivity()).getSupportActionBar().setTitle(theme.getTitle());
             testFragmentPresenter.loadTheme(theme);
