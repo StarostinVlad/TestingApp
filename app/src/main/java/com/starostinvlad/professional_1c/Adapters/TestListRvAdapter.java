@@ -44,7 +44,7 @@ public class TestListRvAdapter extends RecyclerView.Adapter<TestListRvAdapter.Vi
         int total = (int) themes.get(i).getUserProgress().getTotalCount();
         viewHolder.progressBar.setProgress(progress);
         viewHolder.progressBar.setMax(total);
-        viewHolder.textPerTheme.setText(viewHolder.textPerTheme.getContext().getResources().getString(R.string.progressPerTheme,progress,total));
+        viewHolder.textPerTheme.setText(viewHolder.textPerTheme.getContext().getResources().getString(R.string.progressPerTheme, progress, total));
     }
 
     @Override

@@ -3,6 +3,14 @@ apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.google.firebase.crashlytics'
 
 android {
+    signingConfigs {
+        release {
+            storeFile file('C:\\Users\\admin\\Desktop\\keystore_fserials.jks')
+            storePassword 'Jisus131097'
+            keyAlias = 'fs_key'
+            keyPassword 'Fuckit97'
+        }
+    }
     compileSdkVersion 29
     buildToolsVersion "30.0.2"
     defaultConfig {
@@ -15,7 +23,9 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
+            signingConfig signingConfigs.release
+            shrinkResources true
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }

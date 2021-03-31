@@ -52,6 +52,7 @@
         android:text="Ошибки" />
 
     <com.starostinvlad.professional_1c.Views.ProgressButton
+        android:visibility="gone"
         android:layout_gravity="center"
         android:layout_margin="10dp"
         app:btnText="Обновить данные"

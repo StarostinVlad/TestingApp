@@ -16,10 +16,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.starostinvlad.professional_1c.Models.UserProgress;
-import com.starostinvlad.professional_1c.Views.ProgressButton;
 import com.starostinvlad.professional_1c.R;
 import com.starostinvlad.professional_1c.Services.TestJobService;
 import com.starostinvlad.professional_1c.Views.CustomProgressBar;
+import com.starostinvlad.professional_1c.Views.ProgressButton;
 
 import java.util.concurrent.TimeUnit;
 
@@ -44,8 +44,6 @@ public class MainFragment extends Fragment implements MainFragmentContract {
 
         ((AppCompatActivity) requireActivity()).getSupportActionBar().setTitle(getResources().getString(R.string.app_name));
 
-        createNotificationChannel();
-
         presenter = new MainFragmentPresenter(this);
         button = view.findViewById(R.id.theme_btn);
         examBtn = view.findViewById(R.id.exam_btn);
@@ -62,20 +60,7 @@ public class MainFragment extends Fragment implements MainFragmentContract {
         presenter.loadStatistic();
 
         loadBtn.setOnButtonClickListener(v -> {
-            ComponentName serviceComponent = new ComponentName(getContext(), TestJobService.class);
-            JobInfo.Builder builder = new JobInfo.Builder(13101997, serviceComponent);
-//            builder.setPeriodic(TimeUnit.MINUTES.toMillis(5));
-//            builder.setPersisted(true);
-            builder.setMinimumLatency(TimeUnit.SECONDS.toMillis(10)); // wait at least
-            builder.setOverrideDeadline(3 * 1000); // maximum delay
-            //builder.setRequiredNetworkType(JobInfo.NETWORK_TYPE_UNMETERED); // require unmetered network
-            //builder.setRequiresDeviceIdle(true); // device should be idle
-            //builder.setRequiresCharging(false); // we don't care if the device is charging or not
-            JobScheduler jobScheduler = (JobScheduler) getContext().getSystemService(Context.JOB_SCHEDULER_SERVICE);
-            if (jobScheduler != null) {
-                jobScheduler.schedule(builder.build());
-            }
-//            presenter.loadAll();
+            presenter.loadAll();
         });
 
         examBtn.setOnClickListener(v ->
@@ -92,24 +77,6 @@ public class MainFragment extends Fragment implements MainFragmentContract {
             Navigation.findNavController(view).navigate(R.id.action_mainFragment_to_testFragment, bundle);
         });
 
-    }
-
-    private void createNotificationChannel() {
-        // Create the NotificationChannel, but only on API 26+ because
-        // the NotificationChannel class is new and not in the support library
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            CharSequence name = "notification";
-            String description = "description";
-            int importance = NotificationManager.IMPORTANCE_DEFAULT;
-            NotificationChannel channel = new NotificationChannel("professional_1c", name, importance);
-            channel.setDescription(description);
-            // Register the channel with the system; you can't change the importance
-            // or other notification behaviors after this
-            NotificationManager notificationManager = getActivity().getSystemService(NotificationManager.class);
-            if (notificationManager != null) {
-                notificationManager.createNotificationChannel(channel);
-            }
-        }
     }
 
     @Nullable

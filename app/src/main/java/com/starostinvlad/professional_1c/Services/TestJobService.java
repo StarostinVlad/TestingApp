@@ -23,11 +23,10 @@ import io.reactivex.schedulers.Schedulers;
 public class TestJobService extends JobService {
     private static final String TAG = "SyncService";
     private static final String TITLE = "Пора учиться!";
-
-    private Disposable disposable;
     private final String ERRORS_MSG = "У вас %d ошибок, самое время их исправить",
             THEME_MSG = "Проверьте свои знания по теме",
             EXAM_MESSAGE = "Самое время пройти экзамен";
+    private Disposable disposable;
     private AppDatabase appDb;
 
     @Override
@@ -46,7 +45,7 @@ public class TestJobService extends JobService {
                 loadErrors();
                 break;
         }
-
+        jobFinished(params, false);
         return true;
     }
 
@@ -121,7 +120,6 @@ public class TestJobService extends JobService {
         notificationManager.notify(0, builder.build());
         if (disposable != null)
             disposable.dispose();
-        stopSelf();
     }
 
 }

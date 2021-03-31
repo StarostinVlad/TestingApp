@@ -57,14 +57,11 @@ public class ProgressButton extends LinearLayout implements View.OnClickListener
         onClickListener.onButtonClick(view.getId());
     }
 
-    //сеттер для колбека
     public void setOnButtonClickListener(OnClickListener onClickListener) {
         this.onClickListener = onClickListener;
     }
 
-    //сам интерфейс
     public interface OnClickListener {
-        //таб айди для определния по какой вьюхе кликнули
         void onButtonClick(int tabId);
     }
 }
